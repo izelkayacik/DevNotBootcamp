@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             ad.setNegativeButton("Tamam"){s, l ->
                 Log.e("Alert", "Tamam seçildi")
             }
-            
+
 
         }
     }
