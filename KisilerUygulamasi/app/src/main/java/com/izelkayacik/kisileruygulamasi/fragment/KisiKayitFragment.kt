@@ -15,6 +15,8 @@ class KisiKayitFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         tasarim = FragmentKisiKayitBinding.inflate(inflater, container, false)
 
+        tasarim.toolbarKisiKayit.title = "Kişi Kayıt"
+
         tasarim.buttonKaydet.setOnClickListener {
         val kisi_ad = tasarim.editTextKisiAd.text.toString()
         val kisi_tel = tasarim.editTextKisiTel.text.toString()

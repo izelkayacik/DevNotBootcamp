@@ -16,6 +16,8 @@ class KisiDetayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         tasarim = FragmentKisiDetayBinding.inflate(inflater, container,false)
 
+        tasarim.toolbarKisiDetay.title = "Kişi Detay"
+
         val bundle:KisiDetayFragmentArgs by navArgs()
         val gelenKisi = bundle.kisi
 
