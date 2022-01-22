@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FragmentBaglamaOdev</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="anasayfa">ANASAYFA</string>
+    <string name="a_sayfasina_gec">A SAYFASINA GEÇ</string>
+    <string name="x_sayfasina_gec">X SAYFASINA GEÇ</string>
+    <string name="sayfa_a">SAYFA A</string>
+    <string name="b_sayfasina_gec">B SAYFASINA GEÇ</string>
+    <string name="sayfa_b">SAYFA B</string>
+    <string name="y_sayfasina_gec">Y SAYFASINA GEÇ</string>
+    <string name="sayfa_x">SAYFA X</string>
+    <string name="y_sayfasina_git">Y SAYFASINA GİT</string>
+    <string name="sayfa_y">SAYFA Y</string>
+    <string name="back">GERİ TUŞU İLE DİREKT ANASAYFAYA DÖNECEK</string>
+</resources>
