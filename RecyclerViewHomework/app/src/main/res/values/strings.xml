@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RecyclerViewHomework</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="delivery_adress">Alıcı: Teslimat Adresi: 06680</string>
+    <string name="prime_special_deals">Prime Özel Fırsatlar</string>
+</resources>
