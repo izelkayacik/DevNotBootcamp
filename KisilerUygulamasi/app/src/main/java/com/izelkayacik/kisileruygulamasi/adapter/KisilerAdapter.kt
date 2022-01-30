@@ -12,45 +12,46 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.izelkayacik.kisileruygulamasi.R
+import com.izelkayacik.kisileruygulamasi.databinding.CardTasarimBinding
 import com.izelkayacik.kisileruygulamasi.entity.Kisiler
 import com.izelkayacik.kisileruygulamasi.fragment.AnasayfaFragmentDirections
+import com.izelkayacik.kisileruygulamasi.viewmodel.AnasayfaFragmentViewModel
 
 class KisilerAdapter(var mContext:Context,
-                     var kisilerListesi:List<Kisiler>) : RecyclerView.Adapter<KisilerAdapter.CardTasarimTutucu>() {
+                     var kisilerListesi:List<Kisiler>,
+                     var viewModel: AnasayfaFragmentViewModel)
+    : RecyclerView.Adapter<KisilerAdapter.CardTasarimTutucu>() {
 
-    inner class CardTasarimTutucu(view: View) : RecyclerView.ViewHolder(view){
-        var satir_card:CardView
-        var textViewKisiBilgi:TextView
-        var imageViewSilResim:ImageView
-
+    inner class CardTasarimTutucu(cardTasarimBinding: CardTasarimBinding)
+        : RecyclerView.ViewHolder(cardTasarimBinding.root){
+       var cardTasarimBinding: CardTasarimBinding
         init{
-            satir_card = view.findViewById(R.id.satir_card)
-            textViewKisiBilgi = view.findViewById(R.id.textViewKisiBilgi)
-            imageViewSilResim = view.findViewById(R.id.imageViewSilResim)
+            this.cardTasarimBinding = cardTasarimBinding
         }
     }
 
     //Tasarımı Aktarma
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTasarimTutucu {
-        val tasarim = LayoutInflater.from(mContext).inflate(R.layout.card_tasarim, parent, false)
+        val layoutInflater = LayoutInflater.from(mContext)
+        val tasarim = CardTasarimBinding.inflate(layoutInflater, parent, false)
         return  CardTasarimTutucu(tasarim)
     }
 
     //Position bilgisi ile kaç tane
     override fun onBindViewHolder(holder: CardTasarimTutucu, position: Int) {
         val kisi = kisilerListesi.get(position)
+        val t = holder.cardTasarimBinding
+        t.kisiNesnesi = kisi
 
-        holder.textViewKisiBilgi.text = "${kisi.kisi_ad} - ${kisi.kisi_tel}"
-
-        holder.satir_card.setOnClickListener{
+        t.satirCard.setOnClickListener{
             val gecis = AnasayfaFragmentDirections.kisiDetayGecis(kisi)
             Navigation.findNavController(it).navigate(gecis)
         }
 
-        holder.imageViewSilResim.setOnClickListener{
+        t.imageViewSilResim.setOnClickListener{
             Snackbar.make(it, "${kisi.kisi_ad} silinsin mi?", Snackbar.LENGTH_LONG)
                 .setAction("EVET"){
-                    Log.e("Kişi Sil", kisi.kisi_id.toString())
+                    viewModel.sil(kisi.kisi_id)
                 }.show()
         }
     }
