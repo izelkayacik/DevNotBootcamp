@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.izelkayacik.kisileruygulamasi.R
 import com.izelkayacik.kisileruygulamasi.databinding.FragmentKisiKayitBinding
 import com.izelkayacik.kisileruygulamasi.viewmodel.KisiKayitFragmentViewModel
+import com.izelkayacik.kisileruygulamasi.viewmodel.KisiKayitVMF
 
 
 class KisiKayitFragment : Fragment() {
@@ -28,7 +29,9 @@ class KisiKayitFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tempViewModel : KisiKayitFragmentViewModel by viewModels()
+        val tempViewModel : KisiKayitFragmentViewModel by viewModels(){
+            KisiKayitVMF(requireActivity().application)
+        }
         viewModel = tempViewModel
     }
 
